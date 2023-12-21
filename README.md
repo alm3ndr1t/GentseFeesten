@@ -13,3 +13,7 @@ For the Gentse Feesten of 2024, the city council aims to develop a dedicated app
 - **User Interface:** WPF (Windows Presentation Foundation)
 - **Error Handling:** Exception handling for handling errors, including domain rule violations
 - **Architecture:** Three-layer architecture
+
+## School Exercise
+
+This project is part of an end-of-semester school exercise. It was created to demonstrate the use of various technologies and principles learned during the course.

@@ -24,9 +24,9 @@ namespace Domain
             return gebruikers.Select(gebruiker => new GebruikerDto(gebruiker)).OrderBy(g => g.GebruikerId).ToList();
         }
 
-        // De De repository haalt alle gebruikers uit de databank
-        // Als de naam van de gebruikers de input bevat, worden ze meegegeven
-        // De lijst wordt gesorteerd op id, dan op voornaam, dan op achternaam
+        // Get all users from database
+        // if gebruiker with users input exist = return Gebruiker
+        // sort list on Id -> fName -> lName
         public List<GebruikerDto> ZoekGebruikerViaNaam(string naam)
         {
             List<Gebruiker> gevondenGebruikers = new();
@@ -45,14 +45,14 @@ namespace Domain
         }
 
         // Evenement
-        // Returnt alle evenementen in dto en sorteert op startuur
+        // Get all events -> sort on StartUur
         public List<EvenementDto> GeefEvenementen()
         {
             List<Evenement> evenementen = _evenementRepo.GeefEvenementen();
             return evenementen.Select(evenement => new EvenementDto(evenement)).OrderBy(e => e.StartUur).ToList();
         }
 
-        // geeft alle evenementen waarvan de startDatum gelijk is aan de geselecteerde datum en sorteert ze op startuur
+        // Get all events where start = selectedDate then sort on StartUUr
         public List<EvenementDto> GeefEvenementOpDatum(DateTime datum)
         {
             List<Evenement> gevondenEvenementen = new();
@@ -72,7 +72,7 @@ namespace Domain
 
 
 
-        // Zoekt de evenementen waarvan de titel overeenkomt met de input door de gebruiker
+        // Search events based on users input
         public List<EvenementDto> ZoekEvenementenOpTitel(List<EvenementDto> evenementen, string naam)
         {
             List<EvenementDto> gevondenEvenementen = new();
@@ -87,7 +87,7 @@ namespace Domain
         }
 
         // Dagplan
-        // Dagplannen op datum terug krijgen
+        // Get dagplan on date
         public DagplanDto GetDagplanOnDate(DateTime datum)
         {
             Dagplan gevondenDagplan = _dagplanRepo.GeefDagplanOpDatum(datum);
@@ -95,13 +95,13 @@ namespace Domain
             return new DagplanDto (gevondenDagplan);
         } 
 
-        // Dagplan opslaan in databank
+        // Save dagplan in database
         public void SaveDagplan(Dagplan dagplan)
         {
             _dagplanRepo.SaveDagplan(dagplan);
         }
         
-        // dto omzetten in evenement en opslaan in databank
+        // dto omzetten in evenement en save in to database
         public void SaveEvenementInDagplan(EvenementDto evDto, Dagplan dp)
         {
             Evenement eve = evDto.ParseEvenementDto();

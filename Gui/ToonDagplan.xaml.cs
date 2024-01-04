@@ -51,8 +51,7 @@ namespace Gui
 
             } else
             {
-                // Een fout wordt gegooid als er geen geldige datum geselecteerd is,
-                // maar toch op de button werd gedrukt
+                // fout gooien wanneer er op de button gedrukt wordt maar geen datum gekozen is
                 throw new GentseFeestenException("Selecteer een geldige datum!");
             }
         }

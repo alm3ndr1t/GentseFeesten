@@ -48,11 +48,6 @@ namespace Persistentie
                     }
                 }
             }
-            catch (SqlException sqlEx)
-            {
-                // Log or handle the SQL exception
-                throw new GentseFeestenException($"Error while retrieving events from the database. SQL Error: {sqlEx.Message}", sqlEx);
-            }
             catch (Exception ex)
             {
                 throw new GentseFeestenException($"Fout opgetreden bij het ophalen van het evenement | Reden: {ex.Message}");
@@ -99,12 +94,6 @@ namespace Persistentie
 
                     cmd.ExecuteNonQuery();
                 }
-            }
-            catch (SqlException sqlEx)
-            {
-                // Log or display the SQL exception details
-                string errorMessage = $"Error while saving the event. SQL Error: {sqlEx.Message}, LineNumber: {sqlEx.LineNumber}, ErrorCode: {sqlEx.ErrorCode}";
-                throw new GentseFeestenException(errorMessage);
             }
             catch (Exception ex)
             {

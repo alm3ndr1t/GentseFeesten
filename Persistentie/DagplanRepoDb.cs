@@ -42,11 +42,6 @@ namespace Persistentie
                     }
                 }
             }
-            catch (SqlException sqlEx)
-            {
-                // Log or handle the SQL exception
-                throw new GentseFeestenException($"Error while checking if Dagplan exists for the given date from the database. SQL Error: {sqlEx.Message}", sqlEx);
-            }
             catch (Exception ex)
             {
                 // Log or handle other exceptions
@@ -132,11 +127,6 @@ namespace Persistentie
 
                 dagplan.Gebruiker.VoegDagplanToe(dagplan);
                 return dagplan;
-            }
-            catch (SqlException sqlEx)
-            {
-                // Log or handle the SQL exception
-                throw new GentseFeestenException($"Error while retrieving events for the given date from the database. SQL Error: {sqlEx.Message}", sqlEx);
             }
             catch (Exception ex)
             {
